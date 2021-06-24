@@ -27,10 +27,11 @@ export default class AppNav extends React.Component<{}, ComponentState>{
         {children.map((child: NavItem) => this.renderItem(child))}
       </SubNav>
     }else {
-      <Item icon={type} key='key'>{label}</Item>
+      return <Item icon={type} key={key}>{label}</Item>
     }
   }
   render() {
+    
     return <Nav
       style={{ width: "200px" }}
       embeddable={true}
