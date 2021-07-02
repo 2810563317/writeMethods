@@ -1,7 +1,7 @@
 import React from 'react';
-
-import { BrowserRouter as Router, Route} from 'react-router-dom';
-import utils from '../../utils'
+import { renderRoutes } from "react-router-config";
+import { BrowserRouter} from 'react-router-dom';
+import routeConfig from './router'
 type ComponentState={
 
 }
@@ -15,17 +15,9 @@ export default class AppRouter extends React.Component<{}, ComponentState>{
   }
 
   render(){
-    const Pages = utils.getPages()
-    return <Router>
-      <div>
+    return <BrowserRouter>
         {
-          Object.keys(Pages).map(key => (
-              <Route 
-                key={ key } 
-                path={ `/${ key.toLowerCase()}` } 
-                component={ Pages[key] }></Route>
-          ))
+          renderRoutes(routeConfig)
         }
-      </div>
-    </Router>  }
+    </BrowserRouter>  }
 }
